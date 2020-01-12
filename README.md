@@ -1,2 +1,2 @@
 # Projects
-My programs that I've made.
+A collection of programs that I've made.
