@@ -7,7 +7,7 @@ class Tile:
    window = None
    size = [100,100]
    border = 5
-   card_back = pygame.transform.scale(pygame.image.load('image0.bmp'),size)
+   card_back = pygame.transform.scale(pygame.image.load('../Memory/images/image0.bmp'),size)
 
    def __init__(self, position, image):
       # Initialize a tile.
