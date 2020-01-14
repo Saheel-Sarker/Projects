@@ -20,12 +20,12 @@ class Game:
       self.grid_size = 4
       self.create_tile_grid()
       self.total_time = 0
+      self.best_score = 0
       self.score = 0
       self.matched_tiles = 0
       self.active_tiles = []
       self.delay_start_time = None
       self.restart_message = "You win. Press enter to play again"
-   
       
    def create_image_list(self):
       # Creates a list of images
@@ -72,7 +72,13 @@ class Game:
       
       self.window.set_font_color("green")
       self.window.set_font_size(30)
-      self.window.input_string(self.restart_message, (self.window.get_width() - self.window.get_string_width(self.restart_message))/2, (self.window.get_height() - self.window.get_font_height())/2)      
+      if self.best_score == 0:
+         self.best_score = self.score
+      elif self.score < self.best_score:
+         self.best_score = self.score
+      self.score_message = "Your best score so far is " + str(self.best_score)
+      self.window.draw_string(self.score_message, (self.window.get_width() - self.window.get_string_width(self.score_message))/2, self.window.get_height()/2 - self.window.get_font_height()) 
+      self.window.input_string(self.restart_message, (self.window.get_width() - self.window.get_string_width(self.restart_message))/2, self.window.get_height()/2) 
       self.window.set_font_color("white")
       self.continue_game = True
       self.tile_grid = []
